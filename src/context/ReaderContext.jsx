@@ -39,6 +39,9 @@ const useStore = create((set, get) => ({
   // API key — prefer env var so it works across devices without prompting
   apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || localStorage.getItem('anthropic_api_key') || '',
 
+  // Selected paragraph for chat context (Sefaria-style segment linking)
+  selectedParagraph: null, // { part, episode, index, text }
+
   // Chat
   chatMessages: [],
   chatLoading: false,
@@ -54,7 +57,7 @@ const useStore = create((set, get) => ({
   setCurrentView: (view) => set({ currentView: view }),
   navigateHome: () => set({ currentView: 'home', graphOpen: false, mapOpen: false, chatOpen: false, sidebarOpen: false }),
   setBookLoaded: (bookContent, rawBook) => set({ bookLoaded: true, bookContent, rawBook }),
-  setCurrentPosition: (part, episode) => set({ currentPart: part, currentEpisode: episode }),
+  setCurrentPosition: (part, episode) => set({ currentPart: part, currentEpisode: episode, selectedParagraph: null }),
   setScrollProgress: (progress) => set({ scrollProgress: progress }),
 
   openCharacterSidebar: (charId) => set({ sidebarOpen: true, sidebarContent: { type: 'character', id: charId } }),
@@ -77,6 +80,9 @@ const useStore = create((set, get) => ({
     localStorage.setItem('anthropic_api_key', key)
     set({ apiKey: key })
   },
+
+  setSelectedParagraph: (para) => set({ selectedParagraph: para }),
+  clearSelectedParagraph: () => set({ selectedParagraph: null }),
 
   addChatMessage: (message) => set((s) => ({ chatMessages: [...s.chatMessages, message] })),
   setChatLoading: (loading) => set({ chatLoading: loading }),
@@ -116,6 +122,16 @@ const useStore = create((set, get) => ({
     // Return ~500 word window from start of current episode
     const words = text.split(/\s+/)
     return words.slice(0, 500).join(' ')
+  },
+
+  getEpisodeParagraphs: () => {
+    const { bookContent, currentPart, currentEpisode } = get()
+    if (!bookContent) return []
+    const part = bookContent.parts[currentPart]
+    if (!part) return []
+    const ep = part.episodes[currentEpisode]
+    if (!ep) return []
+    return ep.text.split(/\n\n+/).filter(p => p.trim())
   },
 
   getCharacterById: (id) => {

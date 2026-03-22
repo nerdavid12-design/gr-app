@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import useStore from '../context/ReaderContext'
 
 const SUGGESTED_PROMPTS = [
@@ -7,6 +7,44 @@ const SUGGESTED_PROMPTS = [
   "What themes are active here?",
   "Explain a reference in this passage",
 ]
+
+// Scroll to a paragraph in the reader by index
+function scrollToParagraph(index) {
+  const el = document.getElementById(`para-${index}`)
+  if (el) {
+    el.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    // Flash highlight
+    el.style.background = '#E2DACC'
+    setTimeout(() => { el.style.background = '' }, 1200)
+  }
+}
+
+// Render message content with clickable ¶N references
+function renderMessageContent(content) {
+  // Match ¶N or ¶N-M patterns
+  const parts = content.split(/(¶\d+(?:[–-]\d+)?)/g)
+  return parts.map((part, i) => {
+    const match = part.match(/^¶(\d+)(?:[–-](\d+))?$/)
+    if (match) {
+      const paraIndex = parseInt(match[1], 10) - 1 // convert to 0-based
+      return (
+        <span
+          key={i}
+          onClick={() => scrollToParagraph(paraIndex)}
+          style={{
+            color: '#7D6B4A',
+            fontWeight: 600,
+            cursor: 'pointer',
+            borderBottom: '1px dashed #7D6B4A',
+          }}
+        >
+          {part}
+        </span>
+      )
+    }
+    return <span key={i}>{part}</span>
+  })
+}
 
 export default function ChatPanel() {
   const chatOpen = useStore(s => s.chatOpen)
@@ -22,6 +60,9 @@ export default function ChatPanel() {
   const getCurrentPartName = useStore(s => s.getCurrentPartName)
   const getOverallProgress = useStore(s => s.getOverallProgress)
   const getTextWindow = useStore(s => s.getTextWindow)
+  const selectedParagraph = useStore(s => s.selectedParagraph)
+  const clearSelectedParagraph = useStore(s => s.clearSelectedParagraph)
+  const getEpisodeParagraphs = useStore(s => s.getEpisodeParagraphs)
 
   const [input, setInput] = useState('')
   const [keyInput, setKeyInput] = useState('')
@@ -39,21 +80,44 @@ export default function ChatPanel() {
     }
   }, [chatOpen])
 
+  const handleAskAboutParagraph = useCallback(() => {
+    if (!selectedParagraph) return
+    const paraNum = selectedParagraph.index + 1
+    const snippet = selectedParagraph.text.slice(0, 120)
+    sendMessage(`Explain what's happening in ¶${paraNum}: "${snippet}..."`)
+  }, [selectedParagraph])
+
   if (!chatOpen) return null
 
   const partName = getCurrentPartName()
   const progress = Math.round(getOverallProgress() * 100)
   const textWindow = getTextWindow()
-  const contextSnippet = textWindow ? textWindow.slice(0, 80) + '...' : 'No text loaded'
+
+  // Build numbered paragraph context for the system prompt
+  const buildParagraphContext = () => {
+    const paragraphs = getEpisodeParagraphs()
+    if (!paragraphs.length) return textWindow
+    return paragraphs.map((p, i) => `¶${i + 1}: ${p}`).join('\n\n')
+  }
 
   const buildSystemPrompt = () => {
+    const paraContext = buildParagraphContext()
+    const selectedCtx = selectedParagraph
+      ? `\nThe user has selected ¶${selectedParagraph.index + 1}. Focus your answer on this paragraph unless they ask about something else.`
+      : ''
+
     return `You are a knowledgeable reading companion for Thomas Pynchon's Gravity's Rainbow (1973).
 The user is currently reading ${partName}, Episode ${currentEpisode + 1}.
 Their reading progress: ${progress}% through the novel.
-The surrounding text at their current position is:
+
+The episode text is shown below with paragraph numbers (¶1, ¶2, etc.).
+IMPORTANT: When you reference specific text, ALWAYS cite the paragraph number using the ¶N notation (e.g. "In ¶3, Slothrop..."). This helps the user locate exactly what you're talking about.
+${selectedCtx}
+
 ---
-${textWindow}
+${paraContext}
 ---
+
 Answer questions about the novel with the depth of a scholar and the clarity of a good teacher.
 Do not spoil future plot events unless the user explicitly asks.
 When relevant, connect the current passage to major themes: paranoia vs anti-paranoia,
@@ -134,6 +198,11 @@ Keep responses concise unless the user asks for depth.`
     }
   }
 
+  // Check if a selected paragraph is from the current episode
+  const hasActiveSelection = selectedParagraph
+    && selectedParagraph.part === currentPart
+    && selectedParagraph.episode === currentEpisode
+
   return (
     <div
       className="flex-shrink-0 h-full flex flex-col overflow-hidden"
@@ -151,27 +220,101 @@ Keep responses concise unless the user asks for depth.`
           >
             INTELLIGENCE BRIEF
           </div>
-          <button onClick={closeChat} style={{ color: '#928D86', padding: '0.25rem' }}>
+          <button onClick={closeChat} style={{ color: '#928D86', padding: '0.25rem', background: 'none', border: 'none', cursor: 'pointer' }}>
             <span className="material-symbols-outlined" style={{ fontSize: '1.125rem' }}>close</span>
           </button>
         </div>
         <div style={{ fontFamily: "'Noto Serif', serif", fontSize: '0.875rem', color: '#1A1918' }}>
-          Context: {partName}, Episode {currentEpisode + 1}
+          {partName}, Episode {currentEpisode + 1}
         </div>
-        <div
-          className="truncate"
-          style={{
-            marginTop: '0.5rem',
-            padding: '0.375rem 0.5rem',
-            background: '#F3EFE9',
-            borderRadius: '2px',
-            fontFamily: "'Inter', sans-serif",
-            fontSize: '0.625rem',
-            color: '#4A4641',
-          }}
-        >
-          {contextSnippet}
-        </div>
+
+        {/* Selected paragraph indicator */}
+        {hasActiveSelection ? (
+          <div
+            style={{
+              marginTop: '0.5rem',
+              padding: '0.5rem 0.625rem',
+              background: '#EDE8DC',
+              borderLeft: '3px solid #7D6B4A',
+              borderRadius: '0 2px 2px 0',
+              position: 'relative',
+            }}
+          >
+            <div className="flex" style={{ alignItems: 'center', justifyContent: 'space-between', marginBottom: '0.25rem' }}>
+              <span
+                style={{
+                  fontFamily: "'Inter', sans-serif",
+                  fontSize: '0.5625rem',
+                  color: '#7D6B4A',
+                  letterSpacing: '0.1em',
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                }}
+              >
+                ¶{selectedParagraph.index + 1} SELECTED
+              </span>
+              <button
+                onClick={clearSelectedParagraph}
+                style={{ color: '#9B8B7B', padding: '0', background: 'none', border: 'none', cursor: 'pointer', lineHeight: 1 }}
+              >
+                <span className="material-symbols-outlined" style={{ fontSize: '0.875rem' }}>close</span>
+              </button>
+            </div>
+            <div
+              style={{
+                fontFamily: "'Noto Serif', serif",
+                fontSize: '0.75rem',
+                color: '#4A4641',
+                lineHeight: 1.5,
+                display: '-webkit-box',
+                WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical',
+                overflow: 'hidden',
+              }}
+            >
+              {selectedParagraph.text.slice(0, 200)}{selectedParagraph.text.length > 200 ? '...' : ''}
+            </div>
+            {/* Quick ask button */}
+            <button
+              onClick={() => handleAskAboutParagraph()}
+              className="flex"
+              style={{
+                alignItems: 'center',
+                gap: '0.25rem',
+                marginTop: '0.5rem',
+                padding: '0.375rem 0.625rem',
+                background: '#7D6B4A',
+                color: '#FDFCFB',
+                fontFamily: "'Inter', sans-serif",
+                fontSize: '0.625rem',
+                fontWeight: 600,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                borderRadius: '2px',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              <span className="material-symbols-outlined" style={{ fontSize: '12px' }}>chat_bubble</span>
+              Explain this passage
+            </button>
+          </div>
+        ) : (
+          <div
+            style={{
+              marginTop: '0.5rem',
+              padding: '0.375rem 0.5rem',
+              background: '#F3EFE9',
+              borderRadius: '2px',
+              fontFamily: "'Inter', sans-serif",
+              fontSize: '0.625rem',
+              color: '#9B8B7B',
+              fontStyle: 'italic',
+            }}
+          >
+            Click a paragraph in the reader to anchor your question
+          </div>
+        )}
       </div>
 
       {/* API Key prompt */}
@@ -267,7 +410,7 @@ Keep responses concise unless the user asks for depth.`
                   maxWidth: '85%',
                 }}
               >
-                {msg.content}
+                {renderMessageContent(msg.content)}
               </div>
             ) : (
               <div
@@ -282,7 +425,7 @@ Keep responses concise unless the user asks for depth.`
                   whiteSpace: 'pre-wrap',
                 }}
               >
-                {msg.content}
+                {renderMessageContent(msg.content)}
               </div>
             )}
           </div>
@@ -303,6 +446,17 @@ Keep responses concise unless the user asks for depth.`
 
       {/* Input */}
       <div className="flex-shrink-0" style={{ padding: '0.75rem 1.25rem 1.25rem', borderTop: '1px solid #D3CEC4' }}>
+        {hasActiveSelection && (
+          <div style={{
+            fontFamily: "'Inter', sans-serif",
+            fontSize: '0.5625rem',
+            color: '#7D6B4A',
+            marginBottom: '0.375rem',
+            letterSpacing: '0.05em',
+          }}>
+            Asking about ¶{selectedParagraph.index + 1}
+          </div>
+        )}
         <div className="flex" style={{ alignItems: 'flex-end', gap: '0.5rem' }}>
           <input
             ref={inputRef}
@@ -310,7 +464,7 @@ Keep responses concise unless the user asks for depth.`
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Ask about this passage..."
+            placeholder={hasActiveSelection ? `Ask about ¶${selectedParagraph.index + 1}...` : 'Ask about this passage...'}
             className="flex-1"
             style={{
               background: 'transparent',
@@ -329,7 +483,7 @@ Keep responses concise unless the user asks for depth.`
           <button
             onClick={() => sendMessage(input)}
             className="transition-opacity"
-            style={{ padding: '0.5rem', color: '#7D6B4A', opacity: input.trim() ? 1 : 0.4 }}
+            style={{ padding: '0.5rem', color: '#7D6B4A', opacity: input.trim() ? 1 : 0.4, background: 'none', border: 'none', cursor: 'pointer' }}
             disabled={!input.trim() || chatLoading || !apiKey}
           >
             <span className="material-symbols-outlined" style={{ fontSize: '1.25rem' }}>send</span>
