@@ -1,0 +1,122 @@
+[
+  {
+    "id": "pisces",
+    "term": "PISCES",
+    "type": "Organization",
+    "description": "Psychological Intelligence Schemes for Expediting Surrender — the Allied intelligence operation housed at The White Visitation, tasked with psychological warfare and the investigation of paranormal phenomena for military use.",
+    "thematicConnections": ["Control", "Paranoia", "Intelligence"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "achtung",
+    "term": "ACHTUNG",
+    "type": "Organization",
+    "description": "Allied Clearing House, Technical Units, Northern Germany — the intelligence unit nominally employing Slothrop during his time in the Zone, though its actual function remains characteristically unclear.",
+    "thematicConnections": ["Intelligence", "Bureaucracy", "The Zone"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "arf",
+    "term": "ARF",
+    "type": "Organization",
+    "description": "Allied Rocket Fuel — one of several acronymic organizations involved in rocket intelligence gathering in the Zone.",
+    "thematicConnections": ["The Rocket", "Intelligence"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "white-visitation",
+    "term": "The White Visitation",
+    "type": "Organization",
+    "description": "A former mental hospital on the English coast repurposed as headquarters for PISCES and various occult/psychological warfare programs. Home to Pointsman's Pavlovian experiments and séances alike.",
+    "thematicConnections": ["Control", "Paranoia", "The Occult", "Conditioning"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "the-firm",
+    "term": "The Firm",
+    "type": "Organization",
+    "description": "British Special Operations Executive (SOE) — the intelligence service employing Pirate Prentice. Represents the old-boy network of British imperial intelligence.",
+    "thematicConnections": ["Empire", "Intelligence", "The Elect"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "schwarzgerat",
+    "term": "Schwarzgerät",
+    "type": "Object",
+    "description": "The mysterious 'black device' — a special assembly installed in Rocket 00000, made of Imipolex G. The novel's central MacGuffin, sought by virtually every faction in the Zone.",
+    "thematicConnections": ["The Rocket", "Death-Object", "Mystery", "Imipolex G"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "rocket-00000",
+    "term": "Rocket 00000",
+    "type": "Object",
+    "description": "The final V-2 rocket, serial number 00000, containing the Schwarzgerät and ultimately Gottfried as its human payload. Fired by Blicero in the novel's climactic/apocalyptic moment.",
+    "thematicConnections": ["The Rocket", "Death-Object", "Transcendence", "Annihilation"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "imipolex-g",
+    "term": "Imipolex G",
+    "type": "Object",
+    "description": "A fictional arousal-responsive plastic developed by IG Farben. Used both in the Schwarzgerät and allegedly in Jamf's infant conditioning of Slothrop. The material link between corporate chemistry, sexuality, and the rocket.",
+    "thematicConnections": ["Conditioning", "Corporate Power", "The Rocket", "Sexuality"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "the-map",
+    "term": "The Map",
+    "type": "Object",
+    "description": "Slothrop's map of London showing his sexual conquests, which Pointsman discovers correlates with the map of V-2 rocket strikes — the mystery that launches the plot.",
+    "thematicConnections": ["Paranoia", "Cause and Effect", "Statistics", "Sexuality"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "preterite",
+    "term": "Preterite",
+    "type": "Concept",
+    "description": "From Calvinist theology: those passed over by God, not chosen for salvation. In GR, the vast majority of humanity — the forgotten, the colonized, the expendable — as opposed to the Elect who control systems of power.",
+    "thematicConnections": ["Elect vs Preterite", "Colonialism", "Power", "Theology"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "elect",
+    "term": "Elect",
+    "type": "Concept",
+    "description": "The chosen — those who benefit from and perpetuate systems of control. In GR, the corporate-military-intelligence elite: IG Farben, the rocket cartel, the intelligence agencies that survive and profit regardless of which side wins.",
+    "thematicConnections": ["Elect vs Preterite", "Corporate Power", "Control"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "counterforce",
+    "term": "Counterforce",
+    "type": "Concept",
+    "description": "The resistance movement that forms in Part 4, opposing 'Them' — the Elect and their systems of control. Led loosely by Roger Mexico and Pirate Prentice, though Pynchon questions whether any counterforce can avoid becoming what it opposes.",
+    "thematicConnections": ["Resistance", "Paranoia", "Hope", "Futility"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "brennschluss",
+    "term": "Brennschluss",
+    "type": "Concept",
+    "description": "German for 'end of burning' — the moment when a rocket's fuel is exhausted and it begins its ballistic arc. In GR, a metaphor for the transition point between powered ascent and inevitable descent, between control and gravity.",
+    "thematicConnections": ["The Rocket", "Gravity", "Transition", "Death"],
+    "source": "Weisenburger, A Gravity's Rainbow Companion"
+  },
+  {
+    "id": "ig-farben",
+    "term": "IG Farben",
+    "type": "Historical",
+    "description": "The massive German chemical conglomerate that manufactured everything from synthetic rubber to Zyklon B. In GR, represents the corporate power that transcends national boundaries and profits from both sides of any war.",
+    "thematicConnections": ["Corporate Power", "The Elect", "Complicity", "Chemistry"],
+    "source": "Historical"
+  },
+  {
+    "id": "phoebus-cartel",
+    "term": "Phoebus Cartel",
+    "type": "Historical",
+    "description": "The real-life cartel (1924–1939) of lightbulb manufacturers who agreed to limit bulb lifespan to 1,000 hours. In GR, Byron the Bulb's immortality is a rebellion against this planned obsolescence — a parable of corporate control over life and death.",
+    "thematicConnections": ["Corporate Power", "Planned Obsolescence", "Resistance", "The Elect"],
+    "source": "Historical"
+  }
+]

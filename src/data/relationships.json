@@ -1,0 +1,101 @@
+[
+  {
+    "id": "slothrop-katje",
+    "source": "slothrop",
+    "target": "katje",
+    "types": ["romantic", "surveillance"],
+    "label": "Lover / Handler",
+    "description": "Katje is deployed to seduce and monitor Slothrop as part of the intelligence apparatus's investigation into his rocket-sexual map.",
+    "bidirectional": true
+  },
+  {
+    "id": "pointsman-slothrop",
+    "source": "pointsman",
+    "target": "slothrop",
+    "types": ["manipulation"],
+    "label": "Manipulator → Subject",
+    "description": "Pointsman orchestrates the surveillance and conditioning experiments around Slothrop, seeking to prove Pavlovian causality.",
+    "bidirectional": false
+  },
+  {
+    "id": "blicero-gottfried",
+    "source": "blicero",
+    "target": "gottfried",
+    "types": ["master_slave"],
+    "label": "Master / Captive",
+    "description": "Blicero keeps Gottfried as his sexual captive and ultimately fires him inside Rocket 00000 as the novel's terminal act of domination.",
+    "bidirectional": false
+  },
+  {
+    "id": "blicero-enzian",
+    "source": "blicero",
+    "target": "enzian",
+    "types": ["colonial", "master_slave"],
+    "label": "Colonial Master / Former Captive",
+    "description": "In colonial South-West Africa, Blicero (then Weissmann) took the young Enzian as his sexual captive. This relationship shapes both men's trajectories through the novel.",
+    "bidirectional": false
+  },
+  {
+    "id": "tchitcherine-enzian",
+    "source": "tchitcherine",
+    "target": "enzian",
+    "types": ["adversarial", "family"],
+    "label": "Half-Brothers / Adversaries",
+    "description": "Half-siblings who have never met. Tchitcherine is driven to find and kill Enzian, though the novel suggests this quest may be futile.",
+    "bidirectional": true
+  },
+  {
+    "id": "pirate-katje-counterforce",
+    "source": "pirate",
+    "target": "katje",
+    "types": ["allied"],
+    "label": "Counterforce Allies",
+    "description": "Pirate and Katje both become aligned with the Counterforce resistance against They.",
+    "bidirectional": true
+  },
+  {
+    "id": "pirate-roger-counterforce",
+    "source": "pirate",
+    "target": "roger",
+    "types": ["allied"],
+    "label": "Counterforce Allies",
+    "description": "Roger Mexico and Pirate Prentice both become key figures in the Counterforce.",
+    "bidirectional": true
+  },
+  {
+    "id": "jamf-slothrop",
+    "source": "jamf",
+    "target": "slothrop",
+    "types": ["manipulation"],
+    "label": "Historical Conditioning",
+    "description": "Jamf allegedly conditioned the infant Slothrop using Imipolex G, creating the mysterious stimulus-response pattern that drives the plot.",
+    "bidirectional": false
+  },
+  {
+    "id": "roger-jessica",
+    "source": "roger",
+    "target": "jessica",
+    "types": ["romantic"],
+    "label": "Wartime Lovers",
+    "description": "The novel's most tender relationship, existing in the temporary democracy of the Blitz and threatened by peacetime's return to order.",
+    "bidirectional": true
+  },
+  {
+    "id": "tchitcherine-geli",
+    "source": "tchitcherine",
+    "target": "geli",
+    "types": ["romantic"],
+    "label": "Lovers",
+    "description": "Geli Tripping becomes Tchitcherine's lover in the Zone, eventually using her witchcraft to save him from his destructive quest.",
+    "bidirectional": true
+  },
+  {
+    "id": "pointsman-roger",
+    "source": "pointsman",
+    "target": "roger",
+    "types": ["adversarial"],
+    "label": "Ideological Opponents",
+    "description": "Pointsman (cause-and-effect Pavlovian) vs Roger Mexico (probability and randomness) — the novel's central epistemological conflict.",
+    "bidirectional": true
+  }
+]
