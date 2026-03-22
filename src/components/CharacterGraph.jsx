@@ -34,6 +34,7 @@ export default function CharacterGraph() {
   const characters = useStore(s => s.characters)
   const relationships = useStore(s => s.relationships)
   const openCharacterSidebar = useStore(s => s.openCharacterSidebar)
+  const navigateHome = useStore(s => s.navigateHome)
 
   const [factionFilter, setFactionFilter] = useState(new Set())
   const [spoilerFilter, setSpoilerFilter] = useState(false)
@@ -151,6 +152,24 @@ export default function CharacterGraph() {
         style={{ alignItems: 'center', justifyContent: 'space-between', padding: '1rem 2rem', borderBottom: '1px solid #D3CEC4' }}
       >
         <div className="flex" style={{ alignItems: 'center', gap: '1rem' }}>
+          <button
+            onClick={navigateHome}
+            style={{
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: 0,
+              fontFamily: "'Newsreader', serif",
+              fontSize: '1.125rem',
+              fontStyle: 'italic',
+              color: '#7D6B4A',
+              fontWeight: 400,
+            }}
+            title="Back to Home"
+          >
+            GR
+          </button>
+          <span style={{ color: '#D3CEC4', fontSize: '1.25rem', fontWeight: 200 }}>/</span>
           <span
             className="material-symbols-outlined"
             style={{ color: '#7D6B4A', fontSize: 24 }}

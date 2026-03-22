@@ -26,14 +26,18 @@ const useStore = create((set, get) => ({
   currentEpisode: 0,
   scrollProgress: 0, // 0-1 within current episode
 
+  // View routing
+  currentView: 'home', // 'home' | 'reader'
+
   // Panels
   sidebarOpen: false,
   sidebarContent: null, // { type: 'character'|'annotation', id: string }
   chatOpen: false,
   graphOpen: false,
+  mapOpen: false,
 
-  // API key
-  apiKey: localStorage.getItem('anthropic_api_key') || '',
+  // API key — prefer env var so it works across devices without prompting
+  apiKey: import.meta.env.VITE_ANTHROPIC_API_KEY || localStorage.getItem('anthropic_api_key') || '',
 
   // Chat
   chatMessages: [],
@@ -47,6 +51,8 @@ const useStore = create((set, get) => ({
   partEpisodeCounts: PART_EPISODE_COUNTS,
 
   // Actions
+  setCurrentView: (view) => set({ currentView: view }),
+  navigateHome: () => set({ currentView: 'home', graphOpen: false, mapOpen: false, chatOpen: false, sidebarOpen: false }),
   setBookLoaded: (bookContent, rawBook) => set({ bookLoaded: true, bookContent, rawBook }),
   setCurrentPosition: (part, episode) => set({ currentPart: part, currentEpisode: episode }),
   setScrollProgress: (progress) => set({ scrollProgress: progress }),
@@ -62,6 +68,10 @@ const useStore = create((set, get) => ({
   toggleGraph: () => set((s) => ({ graphOpen: !s.graphOpen })),
   openGraph: () => set({ graphOpen: true }),
   closeGraph: () => set({ graphOpen: false }),
+
+  toggleMap: () => set((s) => ({ mapOpen: !s.mapOpen })),
+  openMap: () => set({ mapOpen: true }),
+  closeMap: () => set({ mapOpen: false }),
 
   setApiKey: (key) => {
     localStorage.setItem('anthropic_api_key', key)

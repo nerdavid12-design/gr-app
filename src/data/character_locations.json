@@ -1,0 +1,168 @@
+{
+  "characters": [
+    {
+      "characterId": "slothrop",
+      "origin": {
+        "name": "Mingeborough, Massachusetts, USA",
+        "coordinates": [-72.5, 42.3]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "French Riviera, France", "coordinates": [7.2619, 43.7102] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "Scattered / disintegrated", "coordinates": null }
+      ]
+    },
+    {
+      "characterId": "pirate",
+      "origin": {
+        "name": "England",
+        "coordinates": [-0.1276, 51.5074]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "London / The Zone", "coordinates": [5.0, 51.0] }
+      ]
+    },
+    {
+      "characterId": "blicero",
+      "origin": {
+        "name": "Germany",
+        "coordinates": [10.4515, 51.1657]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] }
+      ]
+    },
+    {
+      "characterId": "katje",
+      "origin": {
+        "name": "The Hague, Netherlands",
+        "coordinates": [4.3007, 52.0705]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "French Riviera, France", "coordinates": [7.2619, 43.7102] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] }
+      ]
+    },
+    {
+      "characterId": "enzian",
+      "origin": {
+        "name": "Windhoek, Namibia (German South West Africa)",
+        "coordinates": [17.0658, -22.5609]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] }
+      ]
+    },
+    {
+      "characterId": "tchitcherine",
+      "origin": {
+        "name": "Russia",
+        "coordinates": [37.6173, 55.7558]
+      },
+      "locations": [
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "Soviet Central Asia, Kazakhstan", "coordinates": [69.2401, 41.2995] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] }
+      ]
+    },
+    {
+      "characterId": "roger",
+      "origin": {
+        "name": "England",
+        "coordinates": [-1.2578, 51.7520]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] }
+      ]
+    },
+    {
+      "characterId": "pointsman",
+      "origin": {
+        "name": "England",
+        "coordinates": [-0.3, 51.0]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "The White Visitation, England", "coordinates": [-0.0, 50.85] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "London, England", "coordinates": [-0.1276, 51.5074] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 10, "placeName": "The Zone, Germany", "coordinates": [10.4515, 51.1657] }
+      ]
+    },
+    {
+      "characterId": "pokler",
+      "origin": {
+        "name": "Germany",
+        "coordinates": [13.4050, 52.5200]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "Peenemünde, Germany", "coordinates": [13.7900, 54.1414] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "Mittelwerke, Nordhausen, Germany", "coordinates": [10.7932, 51.5057] }
+      ]
+    },
+    {
+      "characterId": "jamf",
+      "origin": {
+        "name": "Basel, Switzerland",
+        "coordinates": [7.5886, 47.5596]
+      },
+      "locations": []
+    },
+    {
+      "characterId": "gottfried",
+      "origin": {
+        "name": "Germany",
+        "coordinates": [10.0, 52.0]
+      },
+      "locations": [
+        { "part": 1, "episodeStart": 1, "episodeEnd": 21, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] },
+        { "part": 2, "episodeStart": 1, "episodeEnd": 8, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] },
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "Lüneburg Heath, Germany", "coordinates": [10.0, 53.1] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "Trajectory northward", "coordinates": [10.0, 55.0] }
+      ]
+    },
+    {
+      "characterId": "geli",
+      "origin": {
+        "name": "The Zone, Germany",
+        "coordinates": [11.5, 51.5]
+      },
+      "locations": [
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone, Germany", "coordinates": [11.5, 51.5] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone, Germany", "coordinates": [11.5, 51.5] }
+      ]
+    },
+    {
+      "characterId": "bodine",
+      "origin": {
+        "name": "USA",
+        "coordinates": [-74.0060, 40.7128]
+      },
+      "locations": [
+        { "part": 3, "episodeStart": 1, "episodeEnd": 32, "placeName": "The Zone / Berlin, Germany", "coordinates": [13.4050, 52.5200] },
+        { "part": 4, "episodeStart": 1, "episodeEnd": 12, "placeName": "The Zone / Berlin, Germany", "coordinates": [13.4050, 52.5200] }
+      ]
+    }
+  ],
+  "plotLocations": [
+    { "name": "The White Visitation", "coordinates": [-0.0, 50.85], "description": "Pavlovian research facility, southern England coast" },
+    { "name": "Casino Hermann Goering", "coordinates": [7.2619, 43.7102], "description": "French Riviera conditioning site" },
+    { "name": "Peenemünde", "coordinates": [13.7900, 54.1414], "description": "V-2 rocket development facility, Baltic coast" },
+    { "name": "Mittelwerke / Nordhausen", "coordinates": [10.7932, 51.5057], "description": "Underground rocket factory, central Germany" },
+    { "name": "Lüneburg Heath", "coordinates": [10.0, 53.1], "description": "Blicero's rocket launch site, northern Germany" },
+    { "name": "Windhoek, Namibia", "coordinates": [17.0658, -22.5609], "description": "Herero genocide origin point, German South West Africa" },
+    { "name": "Tashkent / Kazakhstan", "coordinates": [69.2401, 41.2995], "description": "Tchitcherine's New Turkic Alphabet mission" }
+  ]
+}

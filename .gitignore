@@ -3,4 +3,5 @@ dist
 .DS_Store
 *.epub
 *.local
+.env
 .claude/settings.local.json

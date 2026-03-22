@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import useStore from '../context/ReaderContext'
 
 const PART_ROMANS = ['I', 'II', 'III', 'IV']
@@ -8,10 +8,12 @@ export default function TopBar() {
   const currentEpisode = useStore(s => s.currentEpisode)
   const getCurrentPartName = useStore(s => s.getCurrentPartName)
   const toggleGraph = useStore(s => s.toggleGraph)
+  const toggleMap = useStore(s => s.toggleMap)
   const toggleChat = useStore(s => s.toggleChat)
   const bookLoaded = useStore(s => s.bookLoaded)
   const bookContent = useStore(s => s.bookContent)
   const setCurrentPosition = useStore(s => s.setCurrentPosition)
+  const navigateHome = useStore(s => s.navigateHome)
 
   const [menuOpen, setMenuOpen] = useState(false)
   const menuRef = useRef(null)
@@ -54,7 +56,26 @@ export default function TopBar() {
         borderBottom: '1px solid #D3CEC4',
       }}
     >
-      {/* Left: Part/Episode info — clickable to open menu */}
+      {/* Left: GR home link + Part/Episode info */}
+      <div className="flex" style={{ alignItems: 'baseline', gap: '1.25rem' }}>
+      <button
+        onClick={navigateHome}
+        style={{
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: 0,
+          fontFamily: "'Newsreader', serif",
+          fontSize: '1.125rem',
+          fontStyle: 'italic',
+          color: '#7D6B4A',
+          fontWeight: 400,
+          letterSpacing: '0.02em',
+        }}
+        title="Back to Home"
+      >
+        GR
+      </button>
       <button
         ref={toggleRef}
         onClick={() => setMenuOpen(!menuOpen)}
@@ -85,6 +106,7 @@ export default function TopBar() {
           {menuOpen ? 'expand_less' : 'expand_more'}
         </span>
       </button>
+      </div>
 
       {/* Right: icon buttons */}
       <div className="flex" style={{ alignItems: 'center', gap: '0.5rem' }}>
@@ -96,6 +118,16 @@ export default function TopBar() {
         >
           <span className="material-symbols-outlined" style={{ color: '#928D86', fontSize: '1.25rem' }}>
             account_tree
+          </span>
+        </button>
+        <button
+          onClick={toggleMap}
+          className="transition-colors"
+          style={{ padding: '0.5rem', borderRadius: '0.25rem' }}
+          title="Global Map"
+        >
+          <span className="material-symbols-outlined" style={{ color: '#928D86', fontSize: '1.25rem' }}>
+            public
           </span>
         </button>
         <button
