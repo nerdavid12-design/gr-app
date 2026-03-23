@@ -33,7 +33,6 @@ const useStore = create((set, get) => ({
   sidebarOpen: false,
   sidebarContent: null, // { type: 'character'|'annotation', id: string }
   chatOpen: false,
-  graphOpen: false,
   mapOpen: false,
 
   // API key — prefer env var so it works across devices without prompting
@@ -55,7 +54,7 @@ const useStore = create((set, get) => ({
 
   // Actions
   setCurrentView: (view) => set({ currentView: view }),
-  navigateHome: () => set({ currentView: 'home', graphOpen: false, mapOpen: false, chatOpen: false, sidebarOpen: false }),
+  navigateHome: () => set({ currentView: 'home', mapOpen: false, chatOpen: false, sidebarOpen: false }),
   setBookLoaded: (bookContent, rawBook) => set({ bookLoaded: true, bookContent, rawBook }),
   setCurrentPosition: (part, episode) => set({ currentPart: part, currentEpisode: episode, selectedParagraph: null }),
   setScrollProgress: (progress) => set({ scrollProgress: progress }),
@@ -67,10 +66,6 @@ const useStore = create((set, get) => ({
   toggleChat: () => set((s) => ({ chatOpen: !s.chatOpen })),
   openChat: () => set({ chatOpen: true }),
   closeChat: () => set({ chatOpen: false }),
-
-  toggleGraph: () => set((s) => ({ graphOpen: !s.graphOpen })),
-  openGraph: () => set({ graphOpen: true }),
-  closeGraph: () => set({ graphOpen: false }),
 
   toggleMap: () => set((s) => ({ mapOpen: !s.mapOpen })),
   openMap: () => set({ mapOpen: true }),

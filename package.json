@@ -13,9 +13,9 @@
     "d3": "^7.9.0",
     "epubjs": "^0.3.93",
     "jszip": "^3.10.1",
+    "prop-types": "^15.8.1",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-force-graph-2d": "^1.29.1",
     "react-simple-maps": "^3.0.0",
     "zustand": "^5.0.12"
   },

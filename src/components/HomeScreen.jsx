@@ -32,7 +32,6 @@ const CARDS = [
 export default function HomeScreen() {
   const setCurrentView = useStore(s => s.setCurrentView)
   const openChat = useStore(s => s.openChat)
-  const openGraph = useStore(s => s.openGraph)
   const openMap = useStore(s => s.openMap)
   const bookLoaded = useStore(s => s.bookLoaded)
   const { parseEpub } = useEpubParser()

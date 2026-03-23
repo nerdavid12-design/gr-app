@@ -7,7 +7,6 @@ export default function TopBar() {
   const currentPart = useStore(s => s.currentPart)
   const currentEpisode = useStore(s => s.currentEpisode)
   const getCurrentPartName = useStore(s => s.getCurrentPartName)
-  const toggleGraph = useStore(s => s.toggleGraph)
   const toggleMap = useStore(s => s.toggleMap)
   const toggleChat = useStore(s => s.toggleChat)
   const bookLoaded = useStore(s => s.bookLoaded)
@@ -110,16 +109,6 @@ export default function TopBar() {
 
       {/* Right: icon buttons */}
       <div className="flex" style={{ alignItems: 'center', gap: '0.5rem' }}>
-        <button
-          onClick={toggleGraph}
-          className="transition-colors"
-          style={{ padding: '0.5rem', borderRadius: '0.25rem' }}
-          title="Relationship Map"
-        >
-          <span className="material-symbols-outlined" style={{ color: '#928D86', fontSize: '1.25rem' }}>
-            account_tree
-          </span>
-        </button>
         <button
           onClick={toggleMap}
           className="transition-colors"
